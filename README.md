@@ -157,4 +157,8 @@ Seb Lee
 
 ---
 
-如有问题或建议，欢迎通过微信公众号后台联系作者。
+如有问题或建议，欢迎扫码关注微信公众号联系作者：
+
+<p align="center">
+  <img src="public/images/wechat-qrcode-readme.jpg" alt="微信公众号" width="200" />
+</p>
