@@ -30,6 +30,7 @@ export type CslItemType =
   | string
 
 export interface CslItem {
+  [key: string]: unknown // Allow dynamic field access
   id: string
   type: CslItemType
   title: string

@@ -2,8 +2,8 @@ import CSL from 'citeproc'
 import type { CslItem, CitationStyle } from '../types'
 import { loadCslStyle, loadLocale } from './styleLoader'
 
-// 缓存已创建的引擎实例
-const engineCache = new Map<string, CSL.Engine>()
+// 缓存已创建的引擎实例（预留）
+// const engineCache = new Map()
 
 /**
  * 创建 citeproc-js 系统适配器

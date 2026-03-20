@@ -1,4 +1,4 @@
-import type { CslItemType, GbtTypeCode, CitationStyle, FieldSchema } from './types'
+import type { CslItem, CslItemType, GbtTypeCode, CitationStyle, FieldSchema } from './types'
 
 /** GB/T 7714 类型码 → CSL 类型映射 */
 export const GBT_TO_CSL: Record<GbtTypeCode, CslItemType> = {

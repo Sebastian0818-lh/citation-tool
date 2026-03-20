@@ -4,7 +4,7 @@
  */
 
 import type { ParseResult } from '../types'
-import { detectFormat, type FormatDetection } from './detectFormat'
+import { detectFormat } from './detectFormat'
 import { parseGbt7714 } from './gbtParser'
 import { parseApa } from './apaParser'
 import { parseIeee } from './ieeeParser'
