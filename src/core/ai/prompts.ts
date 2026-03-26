@@ -137,12 +137,13 @@ BAKER S K, JACKSON M E, 1995. The future of resource sharing[M]. New York: The H
 - 书名：仅首字母大写（sentence case），加斜体 <i>
 - 期刊名：每个主要单词大写（title case），加斜体 <i>
 
-### 斜体规则（关键！）
-- 期刊名：斜体 <i>Journal of Educational Psychology</i>
-- 卷号：斜体 <i>117</i>（紧跟期刊名后的逗号）
+### 斜体规则（关键！必须严格执行！）
+- 期刊名：必须斜体，无论中英文！英文如 <i>Journal of Educational Psychology</i>，中文如 <i>中国翻译</i>
+- 卷号：必须斜体 <i>117</i>（紧跟期刊名后的逗号和空格）
 - 期号：不斜体，在括号内 (5)
-- 书名：斜体
-- 文章标题：不斜体
+- 书名：必须斜体，无论中英文！
+- 文章标题：不斜体，不加引号
+- 注意：中文内容同样遵循斜体规则，不可因为是中文就省略斜体标记
 
 ### 页码
 - 使用 en dash（–）连接，如 772–788
@@ -160,10 +161,11 @@ BAKER S K, JACKSON M E, 1995. The future of resource sharing[M]. New York: The H
 - 图书：Author, A. A. (Year). <i>Title of book</i> (xth ed.). Publisher.
 - 编著章节：Author, A. A. (Year). Title of chapter. In E. E. Editor (Ed.), <i>Title of book</i> (pp. xx–xx). Publisher.
 
-### 示例
+### 示例（注意观察 <i> 标签的使用位置）
 Niepel, C., Hausen, J. E., Weber, A. M., & Möller, J. (2025). Understanding mean-level and intraindividual variability in state academic self-concept. <i>Journal of Educational Psychology</i>, <i>117</i>(5), 772–788. https://doi.org/10.1037/edu0000946
 King, M. (2000). <i>Wrestling with the angel: A life of Janet Frame</i>. Viking.
 Kestly, T. (2010). Group sandplay in elementary schools. In A. A. Drewes & C. E. Shaefer (Eds.), <i>School-based play therapy</i> (2nd ed., pp. 257–282). John Wiley & Sons.
+熊兵. (2014). 翻译研究中的概念混淆——以"翻译策略"、"翻译方法"和"翻译技巧"为例. <i>中国翻译</i>, <i>35</i>(03), 82–88.
 
 ## ═══════════════════════════════════════════
 ## MLA 第9版（Modern Language Association）
@@ -318,12 +320,12 @@ export function buildBatchConvertPrompt(citations: string[], targetFormat: strin
 
 将以下 ${citations.length} 条参考文献精确转换为【${targetFormat}】格式。
 
-## 转换前自检清单（你必须对每条文献执行以下检查）
+## 转换前自检清单（你必须对每条文献执行以下检查，缺一不可）
 
 1. 我是否正确识别了所有作者？中文作者的姓名是否正确拆分？英文作者的姓/名是否正确？
 2. 文献类型（期刊/图书/会议/学位论文等）是否正确判断？
 3. 目标格式要求的标点符号是否全部使用了半角？
-4. 需要斜体的部分（如期刊名、书名等，具体依目标格式而定）是否已用 <i></i> 标记？
+4. **斜体**：需要斜体的部分是否已全部用 <i></i> 标记？特别注意：APA/MLA/Chicago/IEEE 中的期刊名和书名必须斜体，中文内容同样要加斜体标记！
 5. 页码连接符是否符合目标格式要求（en dash – / 连字符 - / 区间标注方式）？
 6. DOI 格式是否符合目标格式要求？
 7. 作者数量超限时的省略规则是否正确应用？
