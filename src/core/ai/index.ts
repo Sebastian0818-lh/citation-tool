@@ -109,27 +109,39 @@ export async function batchConvertWithAi(
   const userPrompt = buildBatchConvertPrompt(citations, targetFormatLabel)
   const response = await callLlm(config, BATCH_CONVERT_SYSTEM_PROMPT, userPrompt)
 
-  // 按空行分隔结果
-  const results = response
+  // 清理 AI 可能输出的 markdown 代码块包裹
+  let cleaned = response.trim()
+  cleaned = cleaned.replace(/^```[\s\S]*?\n/, '').replace(/\n```\s*$/, '').trim()
+
+  // 策略1：按空行分隔
+  const byBlankLine = cleaned
     .split(/\n\s*\n/)
     .map(s => s.trim())
     .filter(Boolean)
+    // 去掉 AI 可能加的序号
+    .map(s => s.replace(/^\[\d{1,3}\]\s*/, '').replace(/^\d{1,3}[\.\)]\s*/, '').trim())
+    .filter(Boolean)
 
-  // 如果结果数量和输入不匹配，尝试按单行分隔
-  if (results.length !== citations.length) {
-    const lineResults = response
-      .split('\n')
-      .map(s => s.trim())
-      .filter(Boolean)
-      // 去掉可能的序号
-      .map(s => s.replace(/^\d{1,3}[\.\)]\s*/, ''))
-
-    if (lineResults.length === citations.length) {
-      return lineResults
-    }
+  if (byBlankLine.length === citations.length) {
+    return byBlankLine
   }
 
-  return results
+  // 策略2：按单行分隔（某些 AI 不加空行）
+  const byLine = cleaned
+    .split('\n')
+    .map(s => s.trim())
+    .filter(Boolean)
+    .map(s => s.replace(/^\[\d{1,3}\]\s*/, '').replace(/^\d{1,3}[\.\)]\s*/, '').trim())
+    .filter(Boolean)
+
+  if (byLine.length === citations.length) {
+    return byLine
+  }
+
+  // 策略3：如果两种方式都不匹配，取更接近的那个
+  const diffBlank = Math.abs(byBlankLine.length - citations.length)
+  const diffLine = Math.abs(byLine.length - citations.length)
+  return diffBlank <= diffLine ? byBlankLine : byLine
 }
 
 /**
